@@ -12,3 +12,9 @@ Car.create(make: "Tesla", price: 10000.00)
 p Car.all.length
 p Car.first.make
 p Car.first.price
+
+Sub.destroy_all
+
+Sub.create(name:'Javascript')
+Sub.create(name:'Food')
+Sub.create(name:'Flat Earth')
