@@ -5,7 +5,7 @@ const Subs = (props) => {
   const renderSubs = () => {
     return props.subs.map((sub)=> {
       return(
-        <div>
+        <div className ="sub-container">
           <p>id: {sub.id}</p>
           <p>name: {sub.name}</p>
           <a href = {`/subs/${sub.id}`}>Show</a>
