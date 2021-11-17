@@ -1,46 +1,67 @@
 class SubsController < ApplicationController
+  before_action :set_sub, only: [:show, :edit, :update, :destroy]
 
   # get "/subs"
   def index
-    # TODO: display all subs, get all subs
+    subs = Sub.all
 
-    render component: "Subs"
+    render component: "Subs", props: { subs:subs }
   end
 
   # get "/subs/new"
   def new
-    # TODO: take to new sub form
-
     render component: "NewSub"
   end
 
   # post "/subs"
   def create
-    # TODO: Create a new sub
+    # create sub in memory
+    sub = Sub.new(sub_params)
+    # try to save it to DB
+    if(sub.save)
+      redirect_to subs_path
+    else
+      # TODO: render our new form with sub(to show errors)
+    end
   end
 
   # get "/subs/:id"
   def show
-    # TODO: show an individual sub
 
-    render component: "Sub"
+    render component: "Sub", props: { sub: @sub }
   end
 
   # get "/subs/:id/edit"
   def edit
-    #TODO: take to edit form
-
-    render component: "EditSub"
+    render component: "EditSub", props: {sub: @sub}
   end
 
   # put/patch to "/subs/:id"
   def update
-    # TODO: update an existing sub
+    if(@sub.update(sub_params))
+      redirect_to subs_path
+    else
+       # TODO: render our edit form with sub(to show errors)
+    end
   end
 
   # delete "subs/:id"
   def destroy
-    # TODO: delete a specific sub
+    # sub = Sub.find(params[:id])
+    @sub.destroy
+    redirect_to subs_path
+  end
+
+
+  # Private means only visible to class
+  private
+
+  def sub_params
+    params.require(:sub).permit(:name)
+  end
+
+  def set_sub
+    @sub = Sub.find(params[:id])
   end
 
 end
