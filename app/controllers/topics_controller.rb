@@ -27,9 +27,9 @@ class TopicsController < ApplicationController
   # POST to subs/:sub_id/topics
   def create
     # create new topic in memory
-    topic = @sub.topics.save(topic_params)
+    topic = @sub.topics.new(topic_params)
     # try to save
-    if(topic)
+    if(topic.save)
       # These two are the same (takes us to topic show page)
       redirect_to [@sub, @topic]
       # redirect_to sub_topics_path
