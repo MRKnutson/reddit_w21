@@ -9,6 +9,11 @@ class TopicsController < ApplicationController
     render component: "Topics", props: { sub: @sub, topics: @sub.topics }
   end
 
+  # Get /subs/:sub_id/topics/:id
+  #  show a single topic
+  def show
+    render component: "Topic", props: { topic: @topic }
+  end
 
   private
 
