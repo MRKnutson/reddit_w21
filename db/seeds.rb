@@ -13,8 +13,18 @@ p Car.all.length
 p Car.first.make
 p Car.first.price
 
+Topic.destroy_all
 Sub.destroy_all
 
-Sub.create(name:'Javascript')
-Sub.create(name:'Food')
-Sub.create(name:'Flat Earth')
+js = Sub.create(name:'Javascript')
+food =Sub.create(name:'Food')
+fe = Sub.create(name:'Flat Earth')
+
+
+js.topics.create(name: 'JS Functions', body: 'All about functions')
+js.topics.create(name: 'JS Vars', body: 'All about Arrays')
+# Could also create with our topic model (need sub_id)
+Topic.create(name: 'JS ', body: 'All about Arrays', sub_id:js.id)
+
+food.topics.create(name:'Mexican', body:'Probably the best')
+food.topics.create(name:'Thai', body:'Probably the second best')
