@@ -13,7 +13,7 @@ p Car.all.length
 p Car.first.make
 p Car.first.price
 
-Topic.destroy_all
+# Topic.destroy_all  # Dont's need this because dependent: :destroy in model
 Sub.destroy_all
 
 js = Sub.create(name:'Javascript')
