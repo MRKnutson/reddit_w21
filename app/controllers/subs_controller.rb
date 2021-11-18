@@ -28,7 +28,7 @@ class SubsController < ApplicationController
   # get "/subs/:id"
   def show
 
-    render component: "Sub", props: { sub: @sub }
+    render component: "Topics", props: { sub: @sub, topics: @sub.topics }
   end
 
   # get "/subs/:id/edit"

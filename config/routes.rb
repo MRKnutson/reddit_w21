@@ -7,16 +7,26 @@ Rails.application.routes.draw do
   resources :cars
   # resources :subs
   #(C)
-  get "/subs/new", to: "subs#new"
-  post "/subs", to: "subs#create"
-  #(R)
-  get "/subs", to: "subs#index"
-  # because :id is a wildcard it needs to come after any direct paths like /subs/new
-  get "/subs/:id", to: "subs#show"
-  # (U)
-  get "/subs/:id/edit", to: "subs#edit"
-  put "/subs/:id", to: "subs#update"
-  patch "/subs/:id", to: "subs#update"
-  # (D)
-  delete "/subs/:id", to: "subs#destroy"
+  # get "/subs/new", to: "subs#new"
+  # post "/subs", to: "subs#create"
+  # #(R)
+  # get "/subs", to: "subs#index"
+  # # because :id is a wildcard it needs to come after any direct paths like /subs/new
+  # get "/subs/:id", to: "subs#show"
+  # # (U)
+  # get "/subs/:id/edit", to: "subs#edit"
+  # put "/subs/:id", to: "subs#update"
+  # patch "/subs/:id", to: "subs#update"
+  # # (D)
+  # delete "/subs/:id", to: "subs#destroy"
+
+
+# creates subs routes and nested topics routes
+  resources :subs do 
+    resources :topics
+  end
+
+  # get CRUD for topics
+  # get all topics
+  # get '/subs/:sub_id/topic', to: 'topics#index'
 end
