@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :topics do 
     resources :comments
   end
+
+  get "react/demo", to: "subs#react_demo"
   # get CRUD for topics
   # get all topics
   # get '/subs/:sub_id/topic', to: 'topics#index'

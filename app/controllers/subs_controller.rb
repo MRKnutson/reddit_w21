@@ -1,6 +1,19 @@
 class SubsController < ApplicationController
   before_action :set_sub, only: [:show, :edit, :update, :destroy]
 
+
+
+
+# Demo Purposes only
+
+  def react_demo
+    render component: "Demo"
+  end
+
+# Demo only above this line
+
+
+
   # get "/subs"
   def index
     subs = Sub.all
@@ -51,6 +64,8 @@ class SubsController < ApplicationController
     @sub.destroy
     redirect_to subs_path
   end
+
+
 
 
   # Private means only visible to class
